@@ -1,1 +1,12 @@
 Î´Íê´ýÐø¡£¡£
+
+<br />
+<font size='1'><table class='xdebug-error xe-warning' dir='ltr' border='1' cellspacing='0' cellpadding='1'>
+<tr><th align='left' bgcolor='#f57900' colspan="5"><span style='background-color: #cc0000; color: #fce94f; font-size: x-large;'>( ! )</span> Warning: Missing argument 2 for core\JSONUtil::encode(), called in C:\wamp64\www\FrontRe\components\firstComponent\FirstComponentController.class.php on line 27 and defined in C:\wamp64\www\FrontRe\core\JSONUtil.php on line <i>89</i></th></tr>
+<tr><th align='left' bgcolor='#e9b96e' colspan='5'>Call Stack</th></tr>
+<tr><th align='center' bgcolor='#eeeeec'>#</th><th align='left' bgcolor='#eeeeec'>Time</th><th align='left' bgcolor='#eeeeec'>Memory</th><th align='left' bgcolor='#eeeeec'>Function</th><th align='left' bgcolor='#eeeeec'>Location</th></tr>
+<tr><td bgcolor='#eeeeec' align='center'>1</td><td bgcolor='#eeeeec' align='center'>0.0000</td><td bgcolor='#eeeeec' align='right'>243344</td><td bgcolor='#eeeeec'>{main}(  )</td><td title='C:\wamp64\www\FrontRe\mainController.php' bgcolor='#eeeeec'>...\mainController.php<b>:</b>0</td></tr>
+<tr><td bgcolor='#eeeeec' align='center'>2</td><td bgcolor='#eeeeec' align='center'>0.0020</td><td bgcolor='#eeeeec' align='right'>322104</td><td bgcolor='#eeeeec'>FirstComponentController->ajaxLogin(  )</td><td title='C:\wamp64\www\FrontRe\mainController.php' bgcolor='#eeeeec'>...\mainController.php<b>:</b>17</td></tr>
+<tr><td bgcolor='#eeeeec' align='center'>3</td><td bgcolor='#eeeeec' align='center'>0.0200</td><td bgcolor='#eeeeec' align='right'>333704</td><td bgcolor='#eeeeec'>core\JSONUtil::encode(  )</td><td title='C:\wamp64\www\FrontRe\components\firstComponent\FirstComponentController.class.php' bgcolor='#eeeeec'>...\FirstComponentController.class.php<b>:</b>27</td></tr>
+</table></font>
+123

@@ -1,7 +1,7 @@
 <?php
 namespace core;
 
-class ShowPropertiesInterface
+interface  ShowPropertiesInterface
 {
     /*
      * return an array , like properyName => propertyValue
@@ -11,7 +11,7 @@ class ShowPropertiesInterface
      *      $arr = array();
      *      
      *      foreach($this as $key => $value){
-     *          arr[$key] = $value;
+     *          $arr[$key] = $value;
      *      }
      *      
      *      return $arr;

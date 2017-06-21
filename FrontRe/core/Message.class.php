@@ -28,7 +28,7 @@ class Message
         
         session_start();
         
-        if(!$_SESSION['message']){
+        if( !isset($_SESSION['message']) ){
             $temp = new Message();
             return $temp;
         }

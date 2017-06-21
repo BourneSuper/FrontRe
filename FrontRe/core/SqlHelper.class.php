@@ -15,18 +15,18 @@ class SqlHelper
     
     //待解耦
     public function __construct(){
-        $this->host = 'localhost:3306';
+        $this->host = 'localhost:3307';
         $this->user = 'root';
-        $this->password = 'root';
-        $this->dbname = 'mysql';
+        $this->password = '';
+        $this->dbname = 'front_re';
         
-        $this->link = mysql_connect($this->host, $this->user, $password)
-                or die("数据库连接失败" . mysql_error());
+        @$this->link = mysql_connect($this->host, $this->user, $this->password)
+                or die("数据库连接失败:" . iconv("GBK", "UTF-8", mysql_error()) );
         
         mysql_select_db($this->dbname, $this->link)
-                or die("数据库连接失败" . mysql_error());
+                or die("数据库连接失败:" . mysql_error());
         
-        session_start();
+        @session_start();
         
         $_SESSION['sqlHelper'] = $this;
         
@@ -35,9 +35,9 @@ class SqlHelper
     
     public static function getSqlHelper(){
         
-        session_start();
+        @session_start();
         
-        if(!$_SESSION['sqlHelper']){
+        if( !isset($_SESSION['sqlHelper']) ){
             $temp = new SqlHelper();
             return $temp;
         }
@@ -48,7 +48,7 @@ class SqlHelper
     public function query($sql){
         $this->keepLink();
         
-//         mysql_query("set NAMES 'utf8'");
+        mysql_query("set NAMES 'utf8'");
         
         $res = mysql_query($sql, $this->link);
         

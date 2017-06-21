@@ -83,7 +83,7 @@ class JSONUtil
     }
     
     /*
-     * fn encode object(ShowPropertiesInterface) with character converted\
+     * fn encode object(ShowPropertiesInterface) with character converted
      * return simple json string
      */
     public static function encode(ShowPropertiesInterface $obj , $fromCharacter){
@@ -97,7 +97,7 @@ class JSONUtil
         
         }
         
-        return json_encode($arr);
+        return json_encode($arr, JSON_UNESCAPED_UNICODE);
         
     } 
     
