@@ -4,11 +4,11 @@ require_once 'components/firstComponent/dao/UserDao.class.php';
 
 class UserService
 {
-    public function login($userId){
+    public function login($userId, $password){
         $userDAO = new UserDAO();
         $user = $userDAO->findUser($userId);
         
-        if( empty($user->getId()) ){
+        if( empty($user->getId()) || $user->getPassword() !== $password){
             
             return false;
         }
