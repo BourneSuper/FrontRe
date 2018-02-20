@@ -1,9 +1,12 @@
 <?php
-require_once 'components/firstComponent/entity/User.php';
-require_once 'components/firstComponent/dao/UserDao.class.php';
 
-class UserService
-{
+namespace BourneSuper\FrontRe\Components\FirstComponent\DAO;
+
+use BourneSuper\FrontRe\Components\FirstComponent\Entity\User;
+use BourneSuper\FrontRe\Components\FirstComponent\DAO\UserDao;
+
+class UserService{
+    
     public function login($userId, $password){
         $userDAO = new UserDAO();
         $user = $userDAO->findUser($userId);

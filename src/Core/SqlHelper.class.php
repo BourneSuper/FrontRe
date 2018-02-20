@@ -1,12 +1,11 @@
 <?php
 
-namespace core;
+namespace Core;
 
 /*
  * 单例实现数据库工具
  */
-class SqlHelper
-{
+class SqlHelper{
     private $host = '';
     private $user = '';
     private $password = '';

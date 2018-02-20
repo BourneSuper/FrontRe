@@ -1,11 +1,12 @@
 <?php
 
-use core\SqlHelper;
-require_once "core/SqlHelper.class.php";
-require_once "components/firstComponent/entity/User.php";
+namespace BourneSuper\FrontRe\Components\FirstComponent\DAO;
 
-class UserDAO
-{
+use BourneSuper\FrontRe\Core\SqlHelper;
+use BourneSuper\FrontRe\Components\FirstComponent\Entity\User;
+
+class UserDAO{
+    
     public function findUser($userId){
         $user = new User();
         

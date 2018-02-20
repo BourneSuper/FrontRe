@@ -1,9 +1,10 @@
 <?php
+namespace BourneSuper\FrontRe\Components\FirstComponent;
 
+use Core\JSONUtil;
 
-use core\JSONUtil;
-requisrc '/service/UserService.class.php';
-require_once 'core/JSONUtil.php';
+use BourneSuper\FrontRe\Components\FirstComponent\DAO\Service\UserService;
+
 
 class FirstComponentController{
     

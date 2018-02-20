@@ -1,7 +1,7 @@
 
 <?php
-    requiresrc/components/firstComponent/FirstComponentController.class.php';
-
+    //require_once 'src/Components/FirstComponent/FirstComponentController.php';
+    use BourneSuper\FrontRe\Components\FirstComponen\FirstComponentController;
     
     //传入类名和方法名，实现反射调用
     

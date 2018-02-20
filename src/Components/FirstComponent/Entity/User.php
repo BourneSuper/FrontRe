@@ -1,9 +1,9 @@
 <?php
-use core\ShowPropertiesInterface;
-require_once 'core/ShowPropertiesInterface.class.php';
+namespace BourneSuper\FrontRe\Components\FirstComponent\Entity;
 
-class User implements ShowPropertiesInterface
-{
+use BourneSuper\FrontRe\Core\ShowPropertiesInterface;
+
+class User implements ShowPropertiesInterface{
     private $id;
     private $userId;
     private $name;

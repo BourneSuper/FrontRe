@@ -1,7 +1,7 @@
 <?php
-namespace core;
+namespace Core;
 
-use core\ShowPropertiesInterface;
+use Core\ShowPropertiesInterface;
 
 
 

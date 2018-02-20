@@ -1,12 +1,12 @@
 <?php
 
-namespace core;
+namespace Core;
 
 /*
  * 单例实现数据库工具
  */
-class Message
-{
+class Message{
+    
     private $msg;
     private $latestInfoArray;
     private $msgCount;
