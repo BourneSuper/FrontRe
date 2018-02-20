@@ -2,7 +2,7 @@
 
 
 use core\JSONUtil;
-require_once '/service/UserService.class.php';
+requisrc '/service/UserService.class.php';
 require_once 'core/JSONUtil.php';
 
 class FirstComponentController{

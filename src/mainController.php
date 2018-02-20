@@ -1,6 +1,6 @@
 
 <?php
-    require_once '/components/firstComponent/FirstComponentController.class.php';
+    requiresrc/components/firstComponent/FirstComponentController.class.php';
 
     
     //传入类名和方法名，实现反射调用
