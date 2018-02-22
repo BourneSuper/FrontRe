@@ -179,7 +179,7 @@ class PSR4AutoLoader{
      * @return bool True if the file exists, false if not.
      */
     protected function requireFile($file)
-    {
+    {var_dump($file);
         if (file_exists($file)) {
             require $file;
             return true;
