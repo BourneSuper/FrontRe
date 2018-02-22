@@ -1,7 +1,7 @@
 <?php
 namespace BourneSuper\FrontRe\Components\FirstComponent;
 
-use Core\JSONUtil;
+use BourneSuper\FrontRe\Core\JSONUtil;
 
 use BourneSuper\FrontRe\Components\FirstComponent\DAO\Service\UserService;
 
