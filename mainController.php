@@ -3,7 +3,7 @@
     //require_once 'src/Components/FirstComponent/FirstComponentController.php';
     
     //
-    require_once 'src/Core/PSR4AutoLoader';
+    require_once 'src/Core/PSR4AutoLoader.php';
     $loader = new \Core\PSR4AutoLoader;
     $loader->register();
     $loader->addNamespace('Bourne\FrontRe', '/src');
@@ -19,7 +19,7 @@
     $controllerMethod = $_REQUEST['cotrollerMethod'];
 var_dump($_REQUEST);    
     $controller = new $controllerName();        
-    
+var_dump($controller);   
     $res = $controller->$controllerMethod();
     
 ?>
