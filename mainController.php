@@ -9,7 +9,7 @@
     $loader->addNamespace('Bourne\FrontRe', '/src');
     
     
-    use BourneSuper\FrontRe\Components\FirstComponen\FirstComponentController;
+    use BourneSuper\FrontRe\Components\FirstComponent\FirstComponentController;
     //传入类名和方法名，实现反射调用
     if(empty($_REQUEST['cotrollerName']) && empty($_REQUEST['cotrollerMethod']) ){
        die("<br/>请先传入cotrollerName，cotrollerMethod"); 
