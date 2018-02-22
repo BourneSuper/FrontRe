@@ -2,8 +2,8 @@
 
 namespace BourneSuper\FrontRe\Components\FirstComponent\DAO;
 
-use BourneSuper\FrontRe\Core\SqlHelper;
 use BourneSuper\FrontRe\Components\FirstComponent\Entity\User;
+use BourneSuper\FrontRe\Core\SqlHelper;
 
 class UserDAO{
     

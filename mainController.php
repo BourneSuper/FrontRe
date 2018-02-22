@@ -1,8 +1,6 @@
 
 <?php
     //require_once 'src/Components/FirstComponent/FirstComponentController.php';
-    use BourneSuper\FrontRe\Components\FirstComponen\FirstComponentController;
-    
     
     //
     require_once 'src/Core/PSR4AutoLoader';
@@ -10,6 +8,8 @@
     $loader->register();
     $loader->addNamespace('Bourne\FrontRe', '/src');
     
+    
+    use BourneSuper\FrontRe\Components\FirstComponen\FirstComponentController;
     //传入类名和方法名，实现反射调用
     if(empty($_REQUEST['cotrollerName']) && empty($_REQUEST['cotrollerMethod']) ){
        die("<br/>请先传入cotrollerName，cotrollerMethod"); 
