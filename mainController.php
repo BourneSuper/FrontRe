@@ -17,7 +17,7 @@
     
     $controllerName = $_REQUEST['cotrollerName'];
     $controllerMethod = $_REQUEST['cotrollerMethod'];
-    
+var_dump($_REQUEST);    
     $controller = new $controllerName();        
     
     $res = $controller->$controllerMethod();
