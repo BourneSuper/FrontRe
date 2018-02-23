@@ -72,7 +72,7 @@ var_dump($controller);
      *@param $Deep=0 深度，用于缩进,无需手动设置
      *@return 无
      */
-    function recursionReadDir( $dirPath, $resArr){
+    function recursionReadDir( $dirPath, &$resArr){
         $resDir = opendir( $dirPath );
         while( $baseName = readdir($resDir) ){
             //当前文件路径
