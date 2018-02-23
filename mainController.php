@@ -75,15 +75,15 @@ var_dump($controller);
         $resDir = opendir( $dirPath );
         while( $baseName = readdir($resDir) ){
             //当前文件路径
-            $path=$dirPath.'/'.$baseName;
-            if(is_dir($path) AND $baseName!='.' AND $baseName!='..'){
+            $path = $dirPath . '/' . $baseName;
+            if(is_dir($path) && $baseName!='.' AND $baseName!='..'){
                 //是目录，打印目录名，继续迭代
                 echo forChar('-',$deep).$baseName.'/<br/>';
                 $deep++;//深度+1
                 recursionReadDir($path,$deep);
             }else if(basename($path)!='.' AND basename($path)!='..'){
                 //不是文件夹，打印文件名
-                echo forChar('-',$deep).basename($path).'<br/>';
+            	echo $path . basename ( $path ) . '<br/>';
             }
             
         }
