@@ -11,7 +11,7 @@
     $loader->addNamespace('Bourne\FrontRe', '/src');
     
     //2.加载次级控制器
-  
+    loadSecondaryControllers("Bourne\FrontRe");
     
     //传入类名和方法名，实现反射调用
     if(empty($_REQUEST['cotrollerName']) && empty($_REQUEST['cotrollerMethod']) ){
