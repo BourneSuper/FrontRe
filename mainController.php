@@ -18,7 +18,7 @@
     $loader->addNamespace('Bourne\FrontRe', '/src');
     
     //2.加载次级控制器
-    $controllerName = loadSecondaryControllers("Bourne\FrontRe", $controllerName);
+    $controllerName = loadSecondaryControllers('Bourne\FrontRe', $controllerName);
     
     
     
@@ -36,7 +36,7 @@ var_dump($controller);
     	
     	foreach( $arr as $key => $value ){
     		if( $controllerAlias == $key && strpos( $value, "mainController.php" ) === false ){
-    			return $prefix . "\" . parse2ControllerName($value);
+    			return $prefix . "\\" . parse2ControllerName($value);
     			require_once $value;
     		}
     		
@@ -52,7 +52,7 @@ var_dump($controller);
      */
     function scanSecondaryControllers(){
         $arr = array();
-        if( file_exists("secondaryControllerMap.php") ){
+        if( file_exists('secondaryControllerMap.php') ){
             $arr = require_once 'secondaryControllerMap.php';
         }else{
         	
@@ -119,7 +119,7 @@ var_dump($controller);
     
     exit;
     
-$classmapFile = <<<EOF
+/* $classmapFile = <<<EOF
 <?php
     
 return array(
@@ -130,7 +130,7 @@ EOF;
     foreach ($classMap as $class => $code) {
         $classmapFile .= '    '.var_export($class, true).' => '.$code;
     }
-    $classmapFile .= ");\n";
+    $classmapFile .= ");\n"; */
     
     
     
