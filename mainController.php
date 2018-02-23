@@ -34,7 +34,7 @@ var_dump($controller);
     	
     	foreach( $arr as $value ){
     		if( strpos($value, "mainController.php") === false ){
-    			//require_once $value;
+    			require_once $value;
     		}
     		
     	}
@@ -58,8 +58,8 @@ var_dump($arr);
         	
         	foreach( $fileArr as $value ){
         		if( strpos($value, "Controller.php") !== false ){
-        			$contollerNamePosition = strrpos($value, '/');
-        			$contollerName = substr($value, $contollerNamePosition + 1, -4);
+        			$lastSlopePosition = strrpos($value, '/');
+        			$contollerName = substr($value, $lastSlopePosition + 1, -4);
         			$arr[$contollerName] = $value;
 				}
         	}
