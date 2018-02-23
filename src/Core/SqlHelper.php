@@ -20,7 +20,7 @@ class SqlHelper{
         $this->dbname = 'front_re';
         
         @$this->link = mysqli_connect($this->host, $this->user, $this->password)
-        		or die("数据库连接失败:" . iconv("GBK", "UTF-8", mysqli_error($this->link)) );
+        		or die("数据库连接失败:" . iconv("GBK", "UTF-8", mysqli_connect_error()) );
         
 		mysqli_select_db($this->link, $this->dbname )
 				or die("数据库连接失败:" . mysqli_error($this->link));
@@ -46,7 +46,7 @@ class SqlHelper{
     
     public function query($sql){
         $this->keepLink();
-        
+var_dump($this->link);        
         mysqli_query( $this->link, "set NAMES 'utf8'" );
         
         $res = mysqli_query( $this->link, $sql );
