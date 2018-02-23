@@ -6,7 +6,7 @@
   
     //1.普通类由 类加载器自动加载
     require_once 'src/Core/PSR4AutoLoader.php';
-    $loader = new \Core\PSR4AutoLoader;
+    $loader = new BourneSuper\FrontRe\Core\PSR4AutoLoader;
     $loader->register();
     $loader->addNamespace('Bourne\FrontRe', '/src');
     
@@ -49,7 +49,7 @@ var_dump($controller);
     
 //------------------------    
     //执行遍历
-    recursion_readdir('.');
+    recursionReadDir('.');
     
     /**
      *@summary 重复times次字符char
@@ -71,19 +71,19 @@ var_dump($controller);
      *@param $Deep=0 深度，用于缩进,无需手动设置
      *@return 无
      */
-    function recursion_readdir($dirPath,$Deep=0){
-        $resDir=opendir($dirPath);
-        while($basename=readdir($resDir)){
+    function recursionReadDir( $dirPath, $deep=0 ){
+        $resDir = opendir( $dirPath );
+        while( $baseName = readdir($resDir) ){
             //当前文件路径
-            $path=$dirPath.'/'.$basename;
-            if(is_dir($path) AND $basename!='.' AND $basename!='..'){
+            $path=$dirPath.'/'.$baseName;
+            if(is_dir($path) AND $baseName!='.' AND $baseName!='..'){
                 //是目录，打印目录名，继续迭代
-                echo forChar('-',$Deep).$basename.'/<br/>';
-                $Deep++;//深度+1
-                recursion_readdir($path,$Deep);
+                echo forChar('-',$deep).$baseName.'/<br/>';
+                $deep++;//深度+1
+                recursionReadDir($path,$deep);
             }else if(basename($path)!='.' AND basename($path)!='..'){
                 //不是文件夹，打印文件名
-                echo forChar('-',$Deep).basename($path).'<br/>';
+                echo forChar('-',$deep).basename($path).'<br/>';
             }
             
         }
