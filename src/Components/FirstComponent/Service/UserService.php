@@ -3,7 +3,7 @@
 namespace BourneSuper\FrontRe\Components\FirstComponent\Service;
 
 use BourneSuper\FrontRe\Components\FirstComponent\Entity\User;
-use BourneSuper\FrontRe\Components\FirstComponent\DAO\UserDao;
+use BourneSuper\FrontRe\Components\FirstComponent\DAO\UserDAO;
 
 class UserService{
     
