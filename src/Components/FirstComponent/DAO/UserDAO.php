@@ -11,7 +11,7 @@ class UserDAO{
         $user = new User();
         
         $sqlHelper = SqlHelper::getSqlHelper();
-        $sql = "Select * from user where user_id ='"
+        $sql = "Select * from t_user where user_id ='"
                 . $userId ."'";
         $res = $sqlHelper->query($sql);
         
