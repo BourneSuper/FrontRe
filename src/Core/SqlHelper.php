@@ -4,6 +4,7 @@ namespace BourneSuper\FrontRe\Core;
 
 /*
  * 单例实现数据库工具
+ * 注意$_SESSION['sqlHelper']中的需要在一个访问周期内unset
  */
 class SqlHelper{
     private $host = '';
@@ -29,8 +30,6 @@ class SqlHelper{
         
         $_SESSION['sqlHelper'] = $this;
         
-print_r($this->link);
-var_dump( mysqli_get_connection_stats($this->link));
     }
     
     public static function getSqlHelper(){
