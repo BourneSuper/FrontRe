@@ -15,10 +15,10 @@
     require_once 'src/Core/PSR4AutoLoader.php';
     $loader = new BourneSuper\FrontRe\Core\PSR4AutoLoader;
     $loader->register();
-    $loader->addNamespace('Bourne\FrontRe', '/src');
+    $loader->addNamespace('BourneSuper\FrontRe', '/src');
     
     //2.加载次级控制器
-    $controllerName = loadSecondaryControllers('Bourne\FrontRe', $controllerName);
+    $controllerName = loadSecondaryControllers('BourneSuper\FrontRe', $controllerName);
     
     
     
