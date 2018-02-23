@@ -1,7 +1,7 @@
 <?php
-namespace Core;
+namespace BourneSuper\FrontRe\Core;
 
-use Core\ShowPropertiesInterface;
+use BourneSuper\FrontRe\Core\ShowPropertiesInterface;
 
 class Copy2Properties
 {

@@ -1,7 +1,7 @@
 <?php
-namespace Core;
+namespace BourneSuper\FrontRe\Core;
 
-use Core\ShowPropertiesInterface;
+use BourneSuper\FrontRe\Core\ShowPropertiesInterface;
 
 
 
@@ -37,8 +37,7 @@ use Core\ShowPropertiesInterface;
  * 
  * 
  */
-class JSONUtil
-{
+class JSONUtil{
     /*
      * fn decode simple json string with character convert
      * return an array of key/value

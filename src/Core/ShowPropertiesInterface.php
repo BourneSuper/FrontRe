@@ -1,5 +1,5 @@
 <?php
-namespace Core;
+namespace BourneSuper\FrontRe\Core;
 
 interface  ShowPropertiesInterface
 {

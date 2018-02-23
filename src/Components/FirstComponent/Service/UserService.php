@@ -1,6 +1,6 @@
 <?php
 
-namespace BourneSuper\FrontRe\Components\FirstComponent\DAO;
+namespace BourneSuper\FrontRe\Components\FirstComponent\Service;
 
 use BourneSuper\FrontRe\Components\FirstComponent\Entity\User;
 use BourneSuper\FrontRe\Components\FirstComponent\DAO\UserDao;

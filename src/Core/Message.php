@@ -1,6 +1,6 @@
 <?php
 
-namespace Core;
+namespace BourneSuper\FrontRe\Core;
 
 /*
  * 单例实现数据库工具

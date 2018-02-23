@@ -3,7 +3,7 @@ namespace BourneSuper\FrontRe\Components\FirstComponent;
 
 use BourneSuper\FrontRe\Core\JSONUtil;
 
-use BourneSuper\FrontRe\Components\FirstComponent\DAO\Service\UserService;
+use BourneSuper\FrontRe\Components\FirstComponent\Service\UserService;
 
 
 class FirstComponentController{

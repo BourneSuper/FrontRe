@@ -1,5 +1,5 @@
 <?php
-namespace Core;
+namespace BourneSuper\FrontRe\Core;
 
 /**
  * @author Bourne, modified from https://www.php-fig.org/
