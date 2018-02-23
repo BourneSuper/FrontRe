@@ -1,6 +1,13 @@
 
 <?php
     //主控制器
+    
+    //传入类名和方法名，实现反射调用
+    if(empty($_REQUEST['cotrollerName']) && empty($_REQUEST['cotrollerMethod']) ){
+       die("<br/>请先传入cotrollerName，cotrollerMethod"); 
+    }
+    $controllerName = $_REQUEST['cotrollerName'];
+    $controllerMethod = $_REQUEST['cotrollerMethod'];
 
     //require_once 'src/Components/FirstComponent/FirstComponentController.php';
   
@@ -11,35 +18,31 @@
     $loader->addNamespace('Bourne\FrontRe', '/src');
     
     //2.加载次级控制器
-    loadSecondaryControllers("Bourne\FrontRe");
+    $controllerName = loadSecondaryControllers("Bourne\FrontRe", $controllerName);
     
-    //传入类名和方法名，实现反射调用
-    if(empty($_REQUEST['cotrollerName']) && empty($_REQUEST['cotrollerMethod']) ){
-       die("<br/>请先传入cotrollerName，cotrollerMethod"); 
-    }
     
-    $controllerName = $_REQUEST['cotrollerName'];
-    $controllerMethod = $_REQUEST['cotrollerMethod'];
-var_dump($_REQUEST);    
+    
+    //3.
     $controller = new $controllerName();        
 var_dump($controller);   
     $res = $controller->$controllerMethod();
     
     
+//------------------------------- functions --------------------------------------    
     
-    
-    function loadSecondaryControllers($prefix){
+    function loadSecondaryControllers( $prefix, $controllerAlias ){
         
     	$arr = scanSecondaryControllers();
     	
-    	foreach( $arr as $value ){
-    		if( strpos($value, "mainController.php") === false ){
+    	foreach( $arr as $key => $value ){
+    		if( $controllerAlias == $key && strpos( $value, "mainController.php" ) === false ){
+    			return $prefix . "\" . parse2ControllerName($value);
     			require_once $value;
     		}
     		
     	}
     	
-var_dump($arr);    	
+    	return false;
 
     }
     
@@ -69,6 +72,23 @@ var_dump($arr);
         return $arr;
         
     }
+    
+    function parse2ControllerAlias($filePath){
+    	$lastSlopePosition = strrpos($filePath, '/');
+    	$contollerName = substr($filePath, $lastSlopePosition + 1, -4);
+    	
+    	return $contollerName;
+    }
+    
+    function parse2ControllerName($filePath){
+    	$position = strpos($filePath, 'src/');
+    	$contollerName = substr($filePath, $position + 3, -4);
+    	
+    	return $contollerName;
+    }
+    
+    
+    
     
 //------------------------    
     //执行遍历
