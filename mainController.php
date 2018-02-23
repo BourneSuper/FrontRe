@@ -71,19 +71,17 @@ var_dump($controller);
      *@param $Deep=0 深度，用于缩进,无需手动设置
      *@return 无
      */
-    function recursionReadDir( $dirPath, $deep=0 ){
+    function recursionReadDir( $dirPath, $resArr){
         $resDir = opendir( $dirPath );
         while( $baseName = readdir($resDir) ){
             //当前文件路径
             $path = $dirPath . '/' . $baseName;
-            if(is_dir($path) && $baseName!='.' AND $baseName!='..'){
-                //是目录，打印目录名，继续迭代
-                //echo forChar('-',$deep).$baseName.'/<br/>';
-                $deep++;//深度+1
-                recursionReadDir($path,$deep);
+            if(is_dir($path) && $baseName!='.' && $baseName!='..'){
+            	recursionReadDir( $path, $resArr );
             }else if(basename($path)!='.' AND basename($path)!='..'){
                 //不是文件夹，打印文件名
-            	echo $path . '<br/>';
+            	//echo $path . '<br/>';
+            	$resArr[] = $path;
             }
             
         }
