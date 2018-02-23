@@ -36,7 +36,7 @@ var_dump($controller);
     	
     	foreach( $arr as $key => $value ){
     		if( $controllerAlias == $key && strpos( $value, "mainController.php" ) === false ){
-    			return $prefix . "\\" . parse2ControllerName($value);
+    			return $prefix . parse2ControllerName($value);
     			require_once $value;
     		}
     		
