@@ -27,6 +27,9 @@
    
     $res = $controller->$controllerMethod();
     
+    //4.
+    unset( $_SESSION['sqlHelper'] );
+    
     
 //------------------------------- functions --------------------------------------    
     

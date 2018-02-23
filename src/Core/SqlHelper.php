@@ -46,7 +46,7 @@ class SqlHelper{
     
     public function query($sql){
         $this->keepLink();
-var_dump( mysqli_get_connection_stats($this->link));        
+       
         mysqli_query( $this->link, "set NAMES 'utf8'" );
         
         $res = mysqli_query( $this->link, $sql );
