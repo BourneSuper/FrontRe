@@ -82,7 +82,7 @@ var_dump($controller);
     
     function parse2ControllerName($filePath){
     	$position = strpos($filePath, 'src/');
-    	$contollerName = substr($filePath, $position + 3, -4);
+    	$contollerName = str_replace( "/", "\\", substr($filePath, $position + 3, -4) ); 
     	
     	return $contollerName;
     }
