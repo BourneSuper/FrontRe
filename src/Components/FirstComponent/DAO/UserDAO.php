@@ -15,7 +15,7 @@ class UserDAO{
                 . $userId ."'";
         $res = $sqlHelper->query($sql);
         
-        while(!empty($row = mysql_fetch_array($res))){
+        while(!empty($row = mysqli_fetch_array($res))){
             $user->setId($row['id']);
             $user->setUserId($row['user_id']);
             $user->setName($row['user_name']);
