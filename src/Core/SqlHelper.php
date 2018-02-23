@@ -14,16 +14,16 @@ class SqlHelper{
     
     //待解耦
     public function __construct(){
-        $this->host = 'localhost:3307';
+        $this->host = 'localhost:3306';
         $this->user = 'root';
-        $this->password = '';
+        $this->password = 'root';
         $this->dbname = 'front_re';
         
-        @$this->link = mysql_connect($this->host, $this->user, $this->password)
+        @$this->link = mysqli_connect($this->host, $this->user, $this->password)
                 or die("数据库连接失败:" . iconv("GBK", "UTF-8", mysql_error()) );
         
-        mysql_select_db($this->dbname, $this->link)
-                or die("数据库连接失败:" . mysql_error());
+        mysqli_select_db($this->dbname, $this->link)
+                or die("数据库连接失败:" . mysqli_error());
         
         @session_start();
         
@@ -47,12 +47,12 @@ class SqlHelper{
     public function query($sql){
         $this->keepLink();
         
-        mysql_query("set NAMES 'utf8'");
+        mysqli_query("set NAMES 'utf8'");
         
-        $res = mysql_query($sql, $this->link);
+        $res = mysqli_query($sql, $this->link);
         
         if($res === false){
-            die("<hr/>" . __FILE__ . '错误<hr/>' . $sql . '<hr/>' . mysql_error() . "<hr/>");
+            die("<hr/>" . __FILE__ . '错误<hr/>' . $sql . '<hr/>' . mysqli_error() . "<hr/>");
         }
         
         return $res;
@@ -64,10 +64,10 @@ class SqlHelper{
     
         //         mysql_query("set NAMES 'utf8'");
     
-        $res = mysql_query($sql, $this->link);
+        $res = mysqli_query($sql, $this->link);
     
         if($res === false){
-            print_r("<hr/>" . __FILE__ . '错误<hr/>' . $sql . '<hr/>' . mysql_error() . "<hr/>");
+            print_r("<hr/>" . __FILE__ . '错误<hr/>' . $sql . '<hr/>' . mysqli_error() . "<hr/>");
         }
     
         return $res;
@@ -79,7 +79,7 @@ class SqlHelper{
     
         //         mysql_query("set NAMES 'utf8'");
     
-        $res = mysql_query($sql, $this->link);
+        $res = mysqli_query($sql, $this->link);
     
 //         if($res === false){
 //             die("<hr/>" . __FILE__ . '错误<hr/>' . $sql . '<hr/>' . mysql_error() . "<hr/>");
@@ -91,7 +91,7 @@ class SqlHelper{
     
     public function close(){
         if($this->link){
-            mysql_close($this->link);
+            mysqli_close($this->link);
             
             $this->null;
         }
