@@ -11,7 +11,7 @@
     $loader->addNamespace('Bourne\FrontRe', '/src');
     
     //2.加载次级控制器
-    
+recursionReadDir('.');
     
     
     //传入类名和方法名，实现反射调用
@@ -49,7 +49,7 @@ var_dump($controller);
     
 //------------------------    
     //执行遍历
-    recursionReadDir('.');
+    
     
     /**
      *@summary 重复times次字符char
