@@ -58,8 +58,8 @@ var_dump($arr);
         	
         	foreach( $fileArr as $value ){
         		if( strpos($value, "Controller.php") !== false ){
-        			$contollerNamePosition = strrpos($value, '\\');
-        			$contollerName = substr($value, $contollerNamePosition + 2, -4);
+        			$contollerNamePosition = strrpos($value, '/');
+        			$contollerName = substr($value, $contollerNamePosition, -4);
         			$arr[$contollerName] = $value;
 				}
         	}
