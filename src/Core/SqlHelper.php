@@ -29,7 +29,7 @@ class SqlHelper{
         
         $_SESSION['sqlHelper'] = $this;
         
-var_dump( $this->link);
+print_r($this->link);
 var_dump( mysqli_get_connection_stats($this->link));
     }
     
