@@ -32,10 +32,21 @@ var_dump($controller);
         
     	$arr = scanSecondaryControllers();
     	
+    	foreach( $arr as $value ){
+    		if( strpos($value, "mainController.php") === false ){
+    			//require_once $value;
+    		}
+    		
+    	}
+    	
 var_dump($arr);    	
 
     }
     
+    /**
+     * fn return an array of file name of controller
+     * @return array
+     */
     function scanSecondaryControllers(){
         $arr = array();
         if( file_exists("secondaryControllerMap.php") ){
@@ -48,12 +59,10 @@ var_dump($arr);
         	foreach( $fileArr as $value ){
         		if( strpos($value, "Controller.php") !== false ){
         			$contollerNamePosition = strrpos($value, '\\');
-        			$contollerName = substr($value, $contollerNamePosition + 1, -4);
+        			$contollerName = substr($value, $contollerNamePosition + 2, -4);
         			$arr[$contollerName] = $value;
 				}
         	}
-        	
-  
             
         }
         
