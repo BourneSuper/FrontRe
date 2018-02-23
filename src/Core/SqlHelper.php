@@ -12,7 +12,7 @@ class SqlHelper{
     private $dbname = '';
     private $link;
     
-    //待解耦
+    
     public function __construct(){
         $this->host = 'localhost:3306';
         $this->user = 'root';
@@ -20,10 +20,10 @@ class SqlHelper{
         $this->dbname = 'front_re';
         
         @$this->link = mysqli_connect($this->host, $this->user, $this->password)
-                or die("数据库连接失败:" . iconv("GBK", "UTF-8", mysqli_error()) );
+        		or die("数据库连接失败:" . iconv("GBK", "UTF-8", mysqli_error($this->link)) );
         
 		mysqli_select_db($this->link, $this->dbname )
-                or die("数据库连接失败:" . mysqli_error());
+				or die("数据库连接失败:" . mysqli_error($this->link));
         
         @session_start();
         
@@ -47,12 +47,12 @@ class SqlHelper{
     public function query($sql){
         $this->keepLink();
         
-        mysqli_query("set NAMES 'utf8'");
+        mysqli_query( $this->link, "set NAMES 'utf8'" );
         
-        $res = mysqli_query($sql, $this->link);
+        $res = mysqli_query( $this->link, $sql );
         
         if($res === false){
-            die("<hr/>" . __FILE__ . '错误<hr/>' . $sql . '<hr/>' . mysqli_error() . "<hr/>");
+        	die("<hr/>" . __FILE__ . '错误<hr/>' . $sql . '<hr/>' . mysqli_error($this->link) . "<hr/>");
         }
         
         return $res;
@@ -64,10 +64,10 @@ class SqlHelper{
     
         //         mysql_query("set NAMES 'utf8'");
     
-        $res = mysqli_query($sql, $this->link);
+        $res = mysqli_query($this->link, $sql);
     
         if($res === false){
-            print_r("<hr/>" . __FILE__ . '错误<hr/>' . $sql . '<hr/>' . mysqli_error() . "<hr/>");
+        	print_r("<hr/>" . __FILE__ . '错误<hr/>' . $sql . '<hr/>' . mysqli_error($this->link) . "<hr/>");
         }
     
         return $res;
@@ -79,7 +79,7 @@ class SqlHelper{
     
         //         mysql_query("set NAMES 'utf8'");
     
-        $res = mysqli_query($sql, $this->link);
+        $res = mysqli_query( $this->link, $sql );
     
 //         if($res === false){
 //             die("<hr/>" . __FILE__ . '错误<hr/>' . $sql . '<hr/>' . mysql_error() . "<hr/>");
