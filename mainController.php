@@ -11,9 +11,7 @@
     $loader->addNamespace('Bourne\FrontRe', '/src');
     
     //2.加载次级控制器
-$fileArr = [];
-recursionReadDir( '.', $fileArr );
-var_dump($fileArr);    
+  
     
     //传入类名和方法名，实现反射调用
     if(empty($_REQUEST['cotrollerName']) && empty($_REQUEST['cotrollerMethod']) ){
@@ -32,6 +30,10 @@ var_dump($controller);
     
     function loadSecondaryControllers($prefix){
         
+    	$arr = scanSecondaryControllers();
+    	
+var_dump($arr);    	
+
     }
     
     function scanSecondaryControllers(){
@@ -39,8 +41,19 @@ var_dump($controller);
         if( file_exists("secondaryControllerMap.php") ){
             $arr = require_once 'secondaryControllerMap.php';
         }else{
-            
-            scandir($directory);
+        	
+        	$fileArr = [];
+        	recursionFindFile( '.', $fileArr );
+        	
+        	foreach( $fileArr as $value ){
+        		if( strpos($value, "Controller.php") !== false ){
+        			$contollerNamePosition = strrpos($value, '\\');
+        			$contollerName = substr($value, $contollerNamePosition + 1, -4);
+        			$arr[$contollerName] = $value;
+				}
+        	}
+        	
+  
             
         }
         
@@ -51,34 +64,19 @@ var_dump($controller);
 //------------------------    
     //执行遍历
     
-    
-    /**
-     *@summary 重复times次字符char
-     *@param $char 需要重复的字符
-     *@param $times 重复次数
-     *@return 返回重复字符组成的字符串
-     */
-    function forChar($char='-',$times=0){
-        $result='';
-        for($i=0;$i<$times;$i++){
-            $result.=$char;
-        }
-        return $result;
-    }
-    
     /**
      *@summary  递归读取目录
      *@param $dirPath 目录
      *@param $Deep=0 深度，用于缩进,无需手动设置
      *@return 无
      */
-    function recursionReadDir( $dirPath, &$resArr){
+    function recursionFindFile( $dirPath, &$resArr){
         $resDir = opendir( $dirPath );
         while( $baseName = readdir($resDir) ){
             //当前文件路径
             $path = $dirPath . '/' . $baseName;
             if(is_dir($path) && $baseName!='.' && $baseName!='..'){
-            	recursionReadDir( $path, $resArr );
+            	recursionFindFile( $path, $resArr );
             }else if(basename($path)!='.' AND basename($path)!='..'){
                 //不是文件夹，打印文件名
             	//echo $path . '<br/>';
