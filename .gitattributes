@@ -1,0 +1,4 @@
+#修改github仓库（项目）分类
+*.js linguist-language=PHP
+*.css linguist-language=PHP
+*.html linguist-language=PHP
