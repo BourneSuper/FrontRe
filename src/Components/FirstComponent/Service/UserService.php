@@ -4,7 +4,10 @@ namespace BourneSuper\FrontRe\Components\FirstComponent\Service;
 
 use BourneSuper\FrontRe\Components\FirstComponent\Entity\User;
 use BourneSuper\FrontRe\Components\FirstComponent\DAO\UserDAO;
-
+ 
+/**
+ * @author Bourne
+ */
 class UserService{
     
     public function login($userId, $password){

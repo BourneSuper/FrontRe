@@ -2,8 +2,9 @@
 
 namespace BourneSuper\FrontRe\Core;
 
-/*
- * 单例实现数据库工具
+/**
+ * 单例实现信息传递工具
+ * @author Bourne
  */
 class Message{
     

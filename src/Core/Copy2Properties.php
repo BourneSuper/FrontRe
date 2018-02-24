@@ -3,8 +3,10 @@ namespace BourneSuper\FrontRe\Core;
 
 use BourneSuper\FrontRe\Core\ShowPropertiesInterface;
 
-class Copy2Properties
-{
+/**
+ * @author Bourne
+ */
+class Copy2Properties{
     
     public static function copy($arr,ShowPropertiesInterface $destObj,
             ShowPropertiesInterface $srcObj ){

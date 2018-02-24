@@ -5,6 +5,12 @@ namespace BourneSuper\FrontRe\Components\FirstComponent\DAO;
 use BourneSuper\FrontRe\Components\FirstComponent\Entity\User;
 use BourneSuper\FrontRe\Core\SqlHelper;
 
+
+
+
+/**
+ * @author Bourne
+ */
 class UserDAO{
     
     public function findUser($userId){

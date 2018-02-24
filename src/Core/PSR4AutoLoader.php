@@ -2,6 +2,7 @@
 namespace BourneSuper\FrontRe\Core;
 
 /**
+ * PSR-4规范的自动类加载器
  * @author Bourne, modified from https://www.php-fig.org/
  * 
  * @desc

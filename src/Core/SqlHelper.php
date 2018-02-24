@@ -2,9 +2,10 @@
 
 namespace BourneSuper\FrontRe\Core;
 
-/*
+/**
  * 单例实现数据库工具
  * 注意$_SESSION['sqlHelper']中的需要在一个访问周期内unset
+ * @author Bourne
  */
 class SqlHelper{
     private $host = '';

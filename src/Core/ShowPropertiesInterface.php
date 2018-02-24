@@ -1,8 +1,12 @@
 <?php
 namespace BourneSuper\FrontRe\Core;
 
-interface  ShowPropertiesInterface
-{
+
+/**
+ * 显示类的属性的接口
+ * @author Bourne
+ */
+interface  ShowPropertiesInterface{
     /*
      * return an array , like properyName => propertyValue
      * 

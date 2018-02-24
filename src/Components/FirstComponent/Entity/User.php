@@ -4,10 +4,8 @@ namespace BourneSuper\FrontRe\Components\FirstComponent\Entity;
 use BourneSuper\FrontRe\Core\ShowPropertiesInterface;
 
 /**
- * 
  * sql: create table t_user(id int auto_increment, user_name varchar(20), user_id varchar(20), user_password varchar(20), primary key(id));
  * @author Bourne
- *
  */
 class User implements ShowPropertiesInterface{
     private $id;

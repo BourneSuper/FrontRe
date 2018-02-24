@@ -1,14 +1,13 @@
 <?php
-    //主控制器
+	//主控制器，框架的主入口，获取类名和方法名，实现反射调用，管理SqlHelper
     
-    //传入类名和方法名，实现反射调用
+    //获取参数
     if(empty($_REQUEST['cotrollerName']) && empty($_REQUEST['cotrollerMethod']) ){
        die("<br/>请先传入cotrollerName，cotrollerMethod"); 
     }
-    $controllerName = $_REQUEST['cotrollerName'];
+    $controllerName = $_REQUEST['cotrollerName'];//alias
     $controllerMethod = $_REQUEST['cotrollerMethod'];
 
-    //require_once 'src/Components/FirstComponent/FirstComponentController.php';
   
     //1.普通类由 类加载器自动加载
     require_once 'src/Core/PSR4AutoLoader.php';
@@ -21,17 +20,23 @@
     
     
     
-    //3.
+    //3.反射创建类并调用其方法
     $controller = new $controllerName();        
    
     $res = $controller->$controllerMethod();
     
-    //4.
+    //4.释放sqlHelper
     unset( $_SESSION['sqlHelper'] );
     
     
 //------------------------------- functions --------------------------------------    
     
+    /**
+     * fn 加载次级控制器
+     * @param string $prefix
+     * @param string $controllerAlias
+     * @return string|boolean
+     */
     function loadSecondaryControllers( $prefix, $controllerAlias ){
         
     	$arr = scanSecondaryControllers();
@@ -49,15 +54,16 @@
     }
     
     /**
-     * fn return an array of file name of controller
-     * @return array
+     * fn返回控制器的带有路径的文件名的数组，['alias'=>'dirName1/.../dirNameN/fileName' , 'alias2'=>'.../fileName2'...]
+     * 
+     * @return array, an array of file name of controller
      */
     function scanSecondaryControllers(){
         $arr = array();
         if( file_exists('secondaryControllerMap.php') ){
             $arr = require_once 'secondaryControllerMap.php';
         }else{
-        	
+        	//
         	$fileArr = [];
         	recursionFindFile( '.', $fileArr );
         	
@@ -83,30 +89,11 @@
         
     }
     
-    function parse2ControllerAlias($filePath){
-    	$lastSlopePosition = strrpos($filePath, '/');
-    	$contollerName = substr($filePath, $lastSlopePosition + 1, -4);
-    	
-    	return $contollerName;
-    }
-    
-    function parse2ControllerName($filePath){
-    	$position = strpos($filePath, 'src/');
-    	$contollerName = str_replace( "/", "\\", substr($filePath, $position + 3, -4) ); 
-    	
-    	return $contollerName;
-    }
-    
-    
-    
-    
-    //执行遍历
-    
     /**
-     *@summary  递归读取目录
-     *@param $dirPath 目录
-     *@param $Deep=0 深度，用于缩进,无需手动设置
-     *@return 无
+     *fn 递归读取目录,返回带有路径的文件名
+     * @param $dirPath 目录
+     * @param array $resArr, 取引用
+     *@return an array of file name with path
      */
     function recursionFindFile( $dirPath, &$resArr){
         $resDir = opendir( $dirPath );
@@ -116,8 +103,6 @@
             if(is_dir($path) && $baseName!='.' && $baseName!='..'){
             	recursionFindFile( $path, $resArr );
             }else if(basename($path)!='.' AND basename($path)!='..'){
-                //不是文件夹，打印文件名
-            	//echo $path . '<br/>';
             	$resArr[] = $path;
             }
             
@@ -125,6 +110,32 @@
         closedir($resDir);
         
     }
+    
+    /**
+     * fn 将带有路径的文件名格式化为别名（不含命名空间的类）
+     * @param string $filePath
+     * @return string
+     */
+    function parse2ControllerAlias($filePath){
+    	$lastSlopePosition = strrpos($filePath, '/');
+    	$contollerName = substr($filePath, $lastSlopePosition + 1, -4);
+    	
+    	return $contollerName;
+    }
+    
+    /**
+     * fn 将带有路径的文件名格式化为类名
+     * @param string $filePath
+     * @return mixed
+     */
+    function parse2ControllerName($filePath){
+    	$position = strpos($filePath, 'src/');
+    	$contollerName = str_replace( "/", "\\", substr($filePath, $position + 3, -4) ); 
+    	
+    	return $contollerName;
+    }
+    
+    
     
     
     

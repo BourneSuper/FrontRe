@@ -4,8 +4,10 @@ namespace BourneSuper\FrontRe\Core;
 use BourneSuper\FrontRe\Core\ShowPropertiesInterface;
 
 
-
-/*
+/**
+ * JSON 处理工具
+ * @author Bourne
+ *
  * usage:
  * 
  * 
@@ -31,10 +33,6 @@ use BourneSuper\FrontRe\Core\ShowPropertiesInterface;
  *      
  *      
  * }
- * 
- * 
- * 
- * 
  * 
  */
 class JSONUtil{

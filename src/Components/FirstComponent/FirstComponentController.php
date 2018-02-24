@@ -6,6 +6,9 @@ use BourneSuper\FrontRe\Core\JSONUtil;
 use BourneSuper\FrontRe\Components\FirstComponent\Service\UserService;
 
 
+/**
+ * @author Bourne
+ */
 class FirstComponentController{
     
     public function login(){
