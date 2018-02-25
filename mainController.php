@@ -9,11 +9,8 @@
     $controllerMethod = $_REQUEST['cotrollerMethod'];
 
   
-    //1.普通类由 类加载器自动加载
-    require_once 'src/Core/PSR4AutoLoader.php';
-    $loader = new BourneSuper\FrontRe\Core\PSR4AutoLoader;
-    $loader->register();
-    $loader->addNamespace('BourneSuper\FrontRe', './src');
+    //1.普通类由 Composer加载
+    require 'vendor/autoload.php';
     
     //2.加载次级控制器
     $controllerName = loadSecondaryControllers('BourneSuper\FrontRe', $controllerName);
