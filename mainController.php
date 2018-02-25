@@ -12,7 +12,7 @@
     //1.普通类由 Composer加载
     require 'vendor/autoload.php';
     
-    //2.加载次级控制器
+    //2.加载次级控制器，将生成secondaryControllerMap.php，如果新添次级控制器，删除这个文件可以更新次级控制器的加载
     $controllerName = loadSecondaryControllers('BourneSuper\FrontRe', $controllerName);
     
     
