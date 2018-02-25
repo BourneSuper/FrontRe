@@ -1,18 +1,16 @@
 {
-    "name": "bourne-super/front-re",
-    "description": "a lightweight framework of php",
-    "type": "project",
-    "authors": [
-        {
-            "name": "Bourne",
-            "email": "bourne_w@sina.com"
-        }
-    ],
-    "minimum-stability": "beta",
-    "require": {},
-    "autoload": {
-
-        "psr-4": {"BourneSuper\\Frontre\\": "src/"}
-
-    }
+	"name" : "bourne-super/front-re",
+	"description" : "a lightweight framework of php",
+	"type" : "project",
+	"authors" : [{
+			"name" : "Bourne",
+			"email" : "bourne_w@sina.com"
+		}
+	],
+	"minimum-stability" : "beta",
+	"autoload" : {
+		"psr-4" : {
+			"BourneSuper\\FrontRe\\" : "src/"
+		}
+	}
 }
