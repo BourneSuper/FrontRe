@@ -40,15 +40,15 @@ class JSONUtil{
      * fn decode simple json string with character convert
      * return an array of key/value
      */
-    public static function decode($jsonString , $toCharacter){
+    public static function decode( $jsonString, $toCharacter ){
         $arr = array();
         
-        $arr = json_decode($jsonString , true);
+        $arr = json_decode( $jsonString, true );
         
-        if( !empty($toCharacter) ){
-            foreach($arr as $key => $value){
-                $arr[$key] = iconv("UTF-8", $toCharacter, $value);
-            }   
+        if( !empty( $toCharacter ) ){
+            foreach( $arr as $key => $value ){
+                $arr[ $key ] = iconv( "UTF-8", $toCharacter, $value );
+            }
         }
         
         return $arr;
@@ -59,66 +59,58 @@ class JSONUtil{
      * param $jsongString like '{{"a":"1","b":"2"}, json2, json3}'
      * return an two-demension array of key/value
      */
-    public static function decodeJSONArr($jsonString , $toCharacter){
+    public static function decodeJSONArr( $jsonString, $toCharacter ){
         $arr = array();
         
-        $arr = json_decode($jsonString , true);
+        $arr = json_decode( $jsonString, true );
         
-        if( !empty($toCharacter) ){
-            foreach($arr as $key1 => $objArr){
-                foreach($objArr as $key2 => $value){
+        if( !empty( $toCharacter ) ){
+            foreach( $arr as $key1 => $objArr ){
+                foreach( $objArr as $key2 => $value ){
                     
-                    $arr[$key1][$key2] = iconv("UTF-8", $toCharacter, $value);
+                    $arr[ $key1 ][ $key2 ] = iconv( "UTF-8", $toCharacter, $value );
                 }
-            }   
+            }
         }
         
         return $arr;
-        
-        
-        
     }
     
     /*
      * fn encode object(ShowPropertiesInterface) with character converted
      * return simple json string
      */
-    public static function encode(ShowPropertiesInterface $obj , $fromCharacter){
+    public static function encode( ShowPropertiesInterface $obj, $fromCharacter ){
         $arr = $obj->getProperties();
         
-        foreach($arr as $key => $value){
-            if( !empty($fromCharacter) ){
-                $arr[$key] = iconv($fromCharacter, "UTF-8", $value);
-                
+        foreach( $arr as $key => $value ){
+            if( !empty( $fromCharacter ) ){
+                $arr[ $key ] = iconv( $fromCharacter, "UTF-8", $value );
             }
-        
         }
         
-        return json_encode($arr, JSON_UNESCAPED_UNICODE);
-        
-    } 
+        return json_encode( $arr, JSON_UNESCAPED_UNICODE );
+    }
     
     /*
      * fn encode an array of object(ShowPropertiesInterface) with character converted
      * return simple json string
      */
-    public static function encodeObjArr($arr , $fromCharacter){
+    public static function encodeObjArr( $arr, $fromCharacter ){
         $jsonArrStr = "[";
-        foreach($arr as $key => $obj){
-            $rc = new \ReflectionClass($obj);
+        foreach( $arr as $key => $obj ){
+            $rc = new \ReflectionClass( $obj );
             
-            if( !$rc->implementsInterface(ShowPropertiesInterface)){
-                die("must implements ShowPropertiesInterface");
+            if( !$rc->implementsInterface( ShowPropertiesInterface ) ){
+                die( "must implements ShowPropertiesInterface" );
             }
             
-            $arr[$key] = JSONUtil::encode($obj, $fromCharacter);
-            
+            $arr[ $key ] = JSONUtil::encode( $obj, $fromCharacter );
         }
-        $jsonArrStr .= implode(",", $arr);
+        $jsonArrStr .= implode( ",", $arr );
         $jsonArrStr .= "]";
         
         return $jsonArrStr;
-        
     } 
     
     

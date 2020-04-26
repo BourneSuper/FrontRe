@@ -4,135 +4,141 @@ namespace BourneSuper\FrontRe\Core;
 
 /**
  * 单例实现信息传递工具
+ * 
  * @author Bourne
  */
 class Message{
-    
     private $msg;
     private $latestInfoArray;
     private $msgCount;
     private $dataArr;
     
-    //待解耦
+    /**
+     * 
+     */
     public function __construct(){
         $this->msg = '';
         $latestInfoArray = array();
         $msgCount = 0;
         
-        
         session_start();
-        $_SESSION['message'] = $this;
-        
+        $_SESSION[ 'message' ] = $this;
     }
     
+    /**
+     * @return \BourneSuper\FrontRe\Core\Message
+     */
     public static function getMessage(){
-        
         session_start();
         
-        if( !isset($_SESSION['message']) ){
+        if( !isset( $_SESSION[ 'message' ] ) ){
             $temp = new Message();
             return $temp;
         }
         
-        return $_SESSION['message'];
+        return $_SESSION[ 'message' ];
     }
     
-    public function appendMsg($appendStr){
+    /**
+     * @param string $appendStr
+     */
+    public function appendMsg( $appendStr ){
         $this->msg .= $appendStr;
         $this->msgCount++;
     }
     
-    public function pushInfo($str){
-        array_push($this->latestInfoArray, $str);
+    /**
+     * @param string $str
+     */
+    public function pushInfo( $str ){
+        array_push( $this->latestInfoArray, $str );
     }
     
+    /**
+     * @return mixed
+     */
     public function popInfo(){
-        return array_pop($this->latestInfoArray);
+        return array_pop( $this->latestInfoArray );
     }
     
-    public function pushData($key, $data){
-        $this->dataArr[$key] = $data;
+    /**
+     * @param string $key
+     * @param mixed $data
+     */
+    public function pushData( $key, $data ){
+        $this->dataArr[ $key ] = $data;
     }
     
-    public function findData($key){
-        return $this->dataArr[$key];
+    /**
+     * @param string $key
+     * @return mixed
+     */
+    public function findData( $key ){
+        return $this->dataArr[ $key ];
     }
     
-    
- /**
+    /**
+     *
      * @return the $msg
      */
-    public function getMsg()
-    {
+    public function getMsg(){
         return $this->msg;
     }
-
- /**
+    
+    /**
+     *
      * @return the $latestInfoArray
      */
-    public function getLatestInfoArray()
-    {
+    public function getLatestInfoArray(){
         return $this->latestInfoArray;
     }
-
- /**
+    
+    /**
+     *
      * @return the $msgCount
      */
-    public function getMsgCount()
-    {
+    public function getMsgCount(){
         return $this->msgCount;
     }
-
- /**
+    
+    /**
+     *
      * @return the $dataArr
      */
-    public function getDataArr()
-    {
+    public function getDataArr(){
         return $this->dataArr;
     }
-
- /**
-     * @param Ambigous <string, unknown> $msg
+    
+    /**
+     * @param string $msg
      */
-    public function setMsg($msg)
-    {
+    public function setMsg( $msg ){
         $this->msg = $msg;
     }
-
- /**
-     * @param field_type $latestInfoArray
+    
+    /**
+     *
+     * @param array $latestInfoArray            
      */
-    public function setLatestInfoArray($latestInfoArray)
-    {
+    public function setLatestInfoArray( $latestInfoArray ){
         $this->latestInfoArray = $latestInfoArray;
     }
-
- /**
-     * @param field_type $msgCount
+    
+    /**
+     *
+     * @param int $msgCount            
      */
-    public function setMsgCount($msgCount)
-    {
+    public function setMsgCount( $msgCount ){
         $this->msgCount = $msgCount;
     }
-
- /**
-     * @param field_type $dataArr
+    
+    /**
+     *
+     * @param array $dataArr            
      */
-    public function setDataArr($dataArr)
-    {
+    public function setDataArr( $dataArr ){
         $this->dataArr = $dataArr;
     }
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }
 
 ?>

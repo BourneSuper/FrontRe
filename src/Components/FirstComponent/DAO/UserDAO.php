@@ -13,12 +13,15 @@ use BourneSuper\FrontRe\Core\SqlHelper;
  */
 class UserDAO{
     
+    /**
+     * @param string $userId
+     * @return \BourneSuper\FrontRe\Components\FirstComponent\Entity\User
+     */
     public function findUser($userId){
         $user = new User();
         
         $sqlHelper = SqlHelper::getSqlHelper();
-        $sql = "Select * from t_user where user_id ='"
-                . $userId ."'";
+        $sql = "Select * from t_user where `user_id` ='" . addslashes($userId) ."'";
         $res = $sqlHelper->query($sql);
         
         while(!empty($row = mysqli_fetch_array($res))){

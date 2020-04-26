@@ -14,8 +14,7 @@ class User implements ShowPropertiesInterface{
     private $password;
     
     
-    
- /**
+    /**
      * @return the $id
      */
     public function getId()
@@ -23,7 +22,7 @@ class User implements ShowPropertiesInterface{
         return $this->id;
     }
 
- /**
+	/**
      * @return the $user_id
      */
     public function getUserId()
@@ -31,7 +30,7 @@ class User implements ShowPropertiesInterface{
         return $this->userId;
     }
 
- /**
+	/**
      * @return the $name
      */
     public function getName()
@@ -39,7 +38,7 @@ class User implements ShowPropertiesInterface{
         return $this->name;
     }
 
- /**
+	/**
      * @return the $password
      */
     public function getPassword()
@@ -47,7 +46,7 @@ class User implements ShowPropertiesInterface{
         return $this->password;
     }
 
- /**
+	/**
      * @param field_type $id
      */
     public function setId($id)
@@ -55,24 +54,24 @@ class User implements ShowPropertiesInterface{
         $this->id = $id;
     }
 
- /**
-     * @param field_type $user_id
+	/**
+     * @param string $user_id
      */
     public function setUserId($userId)
     {
         $this->userId = $userId;
     }
 
- /**
-     * @param field_type $name
+	/**
+     * @param string $name
      */
     public function setName($name)
     {
         $this->name = $name;
     }
 
- /**
-     * @param field_type $password
+	/**
+     * @param string $password
      */
     public function setPassword($password)
     {
@@ -81,7 +80,10 @@ class User implements ShowPropertiesInterface{
 
     
     
-    //implement
+    /**
+     * {@inheritDoc}
+     * @see \BourneSuper\FrontRe\Core\ShowPropertiesInterface::getProperties()
+     */
     public function getProperties(){
         $arr = array();
         
