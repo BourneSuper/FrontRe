@@ -119,7 +119,7 @@ class SqlHelper{
      * 
      */
     public function getLink(){
-        return $this->Link();
+        return $this->Link;
     }
     
     /**
